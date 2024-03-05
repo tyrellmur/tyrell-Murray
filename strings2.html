@@ -1,0 +1,88 @@
+<!-- Author: Tyrell Murray -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: red;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <div id="output"></div>
+    <!-- Input for first name -->
+    <input type="text" id="firstName" placeholder="First Name">
+    <!-- Input for last name -->
+    <input type="text" id="lastName" placeholder="Last Name">
+    <!-- Input for zip code -->
+    <input type="text" id="zipCode" placeholder="Zip Code">
+
+    <script>
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            str = str.replace(/\s/g, '').toLowerCase();
+            return str === str.split('').reverse().join('');
+        }
+
+        // Function to handle user input and check if it's a palindrome
+        function checkPalindrome() {
+            // Get first name input
+            let firstName = document.getElementById("firstName").value;
+            // Get last name input
+            let lastName = document.getElementById("lastName").value;
+            // Combine first name and last name into a variable
+            let fullName = firstName + " " + lastName;
+            // Get zip code input
+            let zipCode = document.getElementById("zipCode").value;
+
+            // Check if full name length is greater than 20 characters
+            if (fullName.length > 20) {
+                alert("Full name must be 20 characters or less.");
+                return; // Exit function if invalid
+            }
+
+            // Check if zip code is valid (contains exactly 5 digits)
+            if (zipCode.length !== 5 || isNaN(zipCode)) {
+                alert("Zip code must contain exactly 5 digits.");
+                return; // Exit function if invalid
+            }
+
+            // If inputs are valid, show secret message
+            let secretMessage = "Congratulations! You've unlocked the secret message.";
+            document.getElementById("output").innerHTML = `<p>${secretMessage}</p>`;
+        }
+
+        // Call the function to start the palindrome checking process
+        checkPalindrome();
+    </script>
+</body>
+</html>
