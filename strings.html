@@ -1,0 +1,73 @@
+<!-- Author:Tyrell Murray -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 12px;
+           
+                        margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: red;
+                     
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Checker</h1>
+    <div id="output"></div>
+
+    <script>
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            str = str.replace(/\s/g, '').toLowerCase();
+            return str === str.split('').reverse().join('');
+        }
+
+        // Function to handle user input and check if it's a palindrome
+        function checkPalindrome() {
+            let input = prompt("Enter a string:");
+            if (input !== null) {
+                if (isPalindrome(input)) {
+                    document.getElementById("output").innerHTML = `<p>${input} is a palindrome!</p>`;
+                } else {
+                    document.getElementById("output").innerHTML = `<p>${input} is not a palindrome.</p>`;
+                }
+                let continueInput = confirm("Do you want to enter another word?");
+                if (continueInput) {
+                    checkPalindrome();
+                }
+            }
+        }
+
+        // Call the function to start the palindrome checking process
+        checkPalindrome();
+    </script>
+</body>
+</html>
+       
